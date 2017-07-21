@@ -3,11 +3,22 @@
 {% block content %}
   <!-- Create a div for every Most Loved Melon using a Jinja for loop -->
   <h1>Welcome, {{ session['name'] }}</h1>
+
+  <form action='/love-melon' method='POST'>
+    <label>Who is the best melon??</label>
+    <select name='vote'>
+      {% for melon in melons %}
+      <option value="{{melon}}">{{ melons[melon]['name'] }}</option>
+      {% endfor %}
+    </select>
+    <input type="submit">
+  </form>
+
   {% for melon in melons %}
   <div class='melon-div'>
-      <h3>{{ session['name'] }}, this is a {{ melons[melon]['name'] }}</h3>
-      <h2>{{ melons[melon]['num_loves'] }}</h2>
-      <img src="{{ melons[melon]['img'] }}">
+    <h3>{{ session['name'] }}, this is a {{ melons[melon]['name'] }}</h3>
+    <h2>{{ melons[melon]['num_loves'] }}</h2>
+    <img src="{{ melons[melon]['img'] }}">
   </div>
   {% endfor %}
 

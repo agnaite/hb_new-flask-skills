@@ -63,6 +63,17 @@ def get_name():
 
     return redirect('/top-melons')
 
+@app.route('/love-melon', methods=['POST'])
+def add_melon_love():
+    """Submits a vote for top melon"""
+
+    melon = request.form.get('vote')
+
+    MOST_LOVED_MELONS[melon]['num_loves'] += 1
+
+    return render_template('thank-you.html')
+
+
 
 
 if __name__ == "__main__":
