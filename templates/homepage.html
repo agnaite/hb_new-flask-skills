@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>UberMelon’s Most Loved Melons</h1>
+<form action='/get-name', method='GET'>
+  <label for='name'>Name:</label>
+  <input type='text' name='name'/>
+  <input type='submit'>
+</form>
+
+{% endblock %}
