@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<!-- Create a div for every Most Loved Melon using a Jinja for loop -->
-    {% for melon in melons %}
-    <div class='melon-div'>
-        <h3>{{ melons[melon]['name'] }}</h3>
-        <h2>{{ melons[melon]['num_loves'] }}</h2>
-        <img src="{{ melons[melon]['img'] }}">
-    </div>
-    {% endfor %}
+  <!-- Create a div for every Most Loved Melon using a Jinja for loop -->
+  <h1>Welcome, {{ session['name'] }}</h1>
+  {% for melon in melons %}
+  <div class='melon-div'>
+      <h3>{{ session['name'] }}, this is a {{ melons[melon]['name'] }}</h3>
+      <h2>{{ melons[melon]['num_loves'] }}</h2>
+      <img src="{{ melons[melon]['img'] }}">
+  </div>
+  {% endfor %}
+
 {% endblock %}

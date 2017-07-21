@@ -40,13 +40,19 @@ MOST_LOVED_MELONS = {
 def show_home():
     """The homepage"""
 
-    return render_template('homepage.html')
+    if 'name' in session:
+        return redirect('/top-melons')
+    else:
+        return render_template('homepage.html')
 
 @app.route('/top-melons')
 def show_top_melons():
-    """Displays the top melons."""
+    """Displays the top melons if user name is known."""
 
-    return render_template('top-melons.html', melons=MOST_LOVED_MELONS)
+    if 'name' in session:
+        return render_template('top-melons.html', melons=MOST_LOVED_MELONS)
+    else:
+        return redirect('/')
 
 @app.route('/get-name')
 def get_name():
